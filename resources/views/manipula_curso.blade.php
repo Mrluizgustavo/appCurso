@@ -106,7 +106,7 @@
 
                           <th scope="row">{{$registrosCursos->id}}</th>
 
-                          <td>{{$registrosCursos->nomecategoria}}</td>
+                          <td>{{$registrosCursos->nomecurso}}</td>
 
                           <td>
 

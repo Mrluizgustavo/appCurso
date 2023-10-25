@@ -25,10 +25,10 @@ Route::post('/cadAula',[AulaController::class,'cadastroAula'])->name("cadastro-a
 Route::get('/manipulacategoria',[CategoriaController::class,'mostrarManipulaCategoria'])->name("manipula-categoria");
 
 //rota para manipular aula
-Route::get('/manipulaAula',[CategoriaController::class,'mostrarManipulaAula'])->name("manipula-Aula");
+Route::get('/manipulaAula',[AulaController::class,'mostrarManipulaAula'])->name("manipula-Aula");
 
 //rota para manipular curso
-Route::get('/manipulaCurso',[CategoriaController::class,'mostrarManipulaCurso'])->name("manipula-Curso");
+Route::get('/manipulaCurso',[CursoController::class,'mostrarManipulaCurso'])->name("manipula-Curso");
 
 
 Route::get('/alterar-categoria/{registrosCategoria}',[CategoriaController::class,'mostrarAlterarCategoria'])->name("alterar-categoria");

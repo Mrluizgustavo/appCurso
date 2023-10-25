@@ -13,31 +13,18 @@ class CategoriaController extends Controller
     public function mostrarFormCat(){
         return view('cad_categoria');
     }
+
+    //voltar a home
     public function index(){
         return view('index');
     }
-    public function mostrarFormCurso(){
-        return view('cad_curso');
-    }
-    public function mostrarFormAula(){
-        return view('cad_aula');
-    }
-
+   
+    //entrar em manipula-categoria
     public function mostrarManipulaCategoria(){
         $registrosCat = Categoria::All();
         return view('manipula_categoria',['registrosCategoria'=> $registrosCat ]);
     }
-
-    public function mostrarManipulaCurso(){
-        $registrosCurso = Categoria::All();
-        return view('manipula_curso',['registrosCurso'=> $registrosCurso ]);
-    }
-
-    public function mostrarManipulaAula(){
-        $registrosAula = Categoria::All();
-        return view('manipula_aula',['registrosAula'=> $registrosAula ]);
-    }
-
+    //criar row na tabela
     public function cadastroCat(Request $request){
         $registrosCat = $request->validate([
         'nomecategoria' => 'string|required'
