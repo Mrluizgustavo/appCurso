@@ -24,7 +24,13 @@ class CategoriaController extends Controller
         $registrosCat = Categoria::All();
         return view('manipula_categoria',['registrosCategoria'=> $registrosCat ]);
     }
-    //criar row na tabela
+
+    public function DeletarCategoria(Categoria $registrosCategoria){
+        $registrosCategoria->delete();
+        return Redirect::route('manipula-categoria');
+    }
+
+    //criar linha na tabela
     public function cadastroCat(Request $request){
         $registrosCat = $request->validate([
         'nomecategoria' => 'string|required'

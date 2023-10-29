@@ -132,7 +132,7 @@
 
                           <td>
 
-                            <form method="Post" Action="{{route('alterar-categoria',$registrosCursos->id)}}">
+                            <form method="Post" Action="{{route('deletar-curso', $registrosCursos->id)}}">
 
                               @method('delete')
 

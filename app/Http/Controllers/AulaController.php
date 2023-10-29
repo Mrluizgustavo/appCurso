@@ -22,6 +22,11 @@ class AulaController extends Controller
         $registrosAula = Aula::All();
         return view('manipula_aula',['registrosAula'=> $registrosAula ]);
     }
+    public function DeletarAula(Aula $registrosAula){
+        $registrosAula->delete();
+
+        return Redirect::route('manipula-Aula');
+    }
 
     public function cadastroAula(Request $request){
         $registrosAula = $request->validate([

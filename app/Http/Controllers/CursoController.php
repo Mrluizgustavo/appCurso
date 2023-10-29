@@ -24,6 +24,12 @@ class CursoController extends Controller
         return view('manipula_curso',['registrosCurso'=> $registrosCurso ]);
     }
 
+    public function DeletarCurso(Curso $registrosCurso){    
+        $registrosCurso->delete();
+
+        return Redirect::route('manipula-curso');
+
+    }
     //criar row na tabela
     public function cadastroCurso(Request $request){
         $registrosCurso = $request->validate([
