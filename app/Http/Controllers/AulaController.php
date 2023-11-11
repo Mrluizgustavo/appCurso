@@ -39,4 +39,17 @@ class AulaController extends Controller
 
         return Redirect::route('index');
     }
+
+       public function BuscarAulaNome(Request $request){
+
+        $registrosAula= Aula::query();
+        $registrosAula->when($request->aula,function($query,$valor)
+        {
+            $query->where('tituloaula', 'like', '%' . $valor . '%');
+        });
+
+        $registrosAula = $registrosAula->get();
+        return view('manipula_aula',['registrosAula' => $registrosAula]);
+
+    }
 }

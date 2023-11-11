@@ -24,6 +24,7 @@ class CategoriaController extends Controller
         $registrosCat = Categoria::All();
         return view('manipula_categoria',['registrosCategoria'=> $registrosCat ]);
     }
+  
 
     public function DeletarCategoria(Categoria $registrosCategoria){
         $registrosCategoria->delete();
@@ -41,4 +42,37 @@ class CategoriaController extends Controller
         return Redirect::route('index');
     }
 
+    public function BuscarCategoriaNome(Request $request){
+
+        $registrosCategoria= Categoria::query();
+        $registrosCategoria->when($request->categoria,function($query,$valor)
+        {
+            $query->where('nomecategoria', 'like', '%' . $valor . '%');
+        });
+
+        $registrosCategoria = $registrosCategoria->get();
+        return view('manipula_categoria',['registrosCategoria' => $registrosCategoria]);
+
+    }
+
+    public function MostrarAlterarCategoria(Categoria $id){
+        return view('altera_categoria',['registrosCategoria'=> $id]);
+    }
+
+    public function AlterarBancoCategoria(Categoria $registrosCategoria, Request $request){
+
+        $registrosCat = $request->validate([
+            'nomecategoria' => 'string|required'
+        ]);
+
+        $registrosCategoria->id;
+       Categoria::save($registrosCat);
+
+      //  alert('Dados alterados com sucesso!');
+        return Redirect::route('index');
+    }
+
 }
+
+
+

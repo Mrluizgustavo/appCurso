@@ -18,7 +18,7 @@
 
           <div class="title d-flex align-items-center flex-wrap">
 
-            <h2 class="mr-40">Gerenciamento da Categoria</h2>
+            <h2 class="mr-40">Gerenciamento das Aulas</h2>
 
           </div>
 
@@ -36,7 +36,7 @@
 
                 <div class="card-style mb-30 ">
 
-                  <h6 class="mb-25 fs-4">Digite o nome da categoria de curso</h6>
+                  <h6 class="mb-25 fs-4">Digite o nome da aula do curso</h6>
 
  
 
@@ -46,7 +46,7 @@
 
                     <div class="container m-5">
 
-                      <form method="get" action="/editar-categoria">
+                      <form method="get" action="{{route('buscar-aula-nome')}}">
 
                         <div class="row">
 
@@ -54,7 +54,7 @@
 
                           <div class="col-6">
 
-                            <input type="text" id="categoria" name="categoria" class="form-control" placeholder="Digite a Categoria" aria-label="First name">
+                            <input type="text" id="categoria" name="aula" class="form-control" placeholder="Digite a aula" aria-label="First name">
 
                           </div>
 

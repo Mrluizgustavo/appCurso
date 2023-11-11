@@ -43,4 +43,17 @@ class CursoController extends Controller
 
         return Redirect::route('index');
     }
+
+    public function BuscarCursoNome(Request $request){
+
+        $registrosCurso= Curso::query();
+        $registrosCurso->when($request->categoria,function($query,$valor)
+        {
+            $query->where('nomecurso', 'like', '%' . $valor . '%');
+        });
+
+        $registrosCurso = $registrosCurso->get();
+        return view('manipula_curso',['registrosCurso' => $registrosCurso]);
+
+    }
 }
