@@ -37,7 +37,7 @@ class AulaController extends Controller
 
         Aula::create($registrosAula);
 
-        return Redirect::route('index');
+        return Redirect::route('form-cadastro-aula');
     }
 
        public function BuscarAulaNome(Request $request){
@@ -51,5 +51,26 @@ class AulaController extends Controller
         $registrosAula = $registrosAula->get();
         return view('manipula_aula',['registrosAula' => $registrosAula]);
 
+    }
+
+    public function MostrarAlterarAula(Aula $registrosAula){
+        return view('altera_aula',['registrosAula'=> $registrosAula]);
+    }
+
+    public function AlterarBancoAula(Aula $registrosAula, Request $request){
+
+        $dadosValidados = $request->validate([
+            'idcurso' => 'required',
+            'tituloaula' => 'string|required',
+            'urlaula'=> 'string|required',
+        ]);
+    
+        $idAula = $registrosAula->id;
+        
+        $Aula = Aula::find($idAula);
+    
+        $Aula->update($dadosValidados);
+    
+        return redirect()->route('manipula-Aula');
     }
 }

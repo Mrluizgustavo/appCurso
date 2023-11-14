@@ -21,7 +21,7 @@
                   <div class="input-style-1 fs-4 ">
 
                     <form action="{{route('alterar-banco-categoria',$registrosCategoria->id)}}" method="post">
-                     @method(put)
+                     @method('put')
                     @csrf
                     <label class="fs-4">Categoria</label>
                     

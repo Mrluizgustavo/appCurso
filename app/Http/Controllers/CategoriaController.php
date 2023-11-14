@@ -39,7 +39,7 @@ class CategoriaController extends Controller
 
         Categoria::create($registrosCat);
 
-        return Redirect::route('index');
+        return Redirect::route('form-cadastro-categoria');
     }
 
     public function BuscarCategoriaNome(Request $request){
@@ -55,8 +55,8 @@ class CategoriaController extends Controller
 
     }
 
-    public function MostrarAlterarCategoria(Categoria $id){
-        return view('altera_categoria',['registrosCategoria'=> $id]);
+    public function MostrarAlterarCategoria(Categoria $registrosCategoria){
+        return view('altera_categoria',['registrosCategoria'=> $registrosCategoria]);
     }
 
     public function AlterarBancoCategoria(Categoria $registrosCategoria, Request $request){
@@ -65,11 +65,10 @@ class CategoriaController extends Controller
             'nomecategoria' => 'string|required'
         ]);
 
-        $registrosCategoria->id;
-       Categoria::save($registrosCat);
-
-      //  alert('Dados alterados com sucesso!');
-        return Redirect::route('index');
+        $idCategoria = $registrosCategoria->id;
+        $categoria = Categoria::find($idCategoria);
+        $categoria->update($registrosCat);
+        return redirect()->route('manipula-categoria');
     }
 
 }

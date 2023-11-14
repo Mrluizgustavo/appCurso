@@ -41,7 +41,7 @@ class CursoController extends Controller
 
         Curso::create($registrosCurso);
 
-        return Redirect::route('index');
+        return Redirect::route('form-cadastro-curso');
     }
 
     public function BuscarCursoNome(Request $request){
@@ -55,5 +55,27 @@ class CursoController extends Controller
         $registrosCurso = $registrosCurso->get();
         return view('manipula_curso',['registrosCurso' => $registrosCurso]);
 
+    }
+
+    public function MostrarAlterarCurso(Curso $registrosCurso){
+        return view('altera_curso',['registrosCurso'=> $registrosCurso]);
+    }
+
+    public function AlterarBancoCurso(Curso $registrosCurso, Request $request){
+
+        $dadosValidados = $request->validate([
+            'idcategoria' => 'required',
+            'nomecurso' => 'string|required',
+            'cargahoraria'=> 'string|required',
+            'valor'=> 'numeric|required',
+        ]);
+    
+        $idCurso = $registrosCurso->id;
+        
+        $curso = Curso::find($idCurso);
+    
+        $curso->update($dadosValidados);
+    
+        return redirect()->route('manipula-curso');
     }
 }

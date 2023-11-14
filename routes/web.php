@@ -31,9 +31,19 @@ Route::delete('/deletarCurso/{registrosCurso}',[CursoController::class,'DeletarC
 Route::get('/buscarcursonome',[CursoController::class,'BuscarCursoNome'])->name("buscar-curso-nome");
 
 
+Route::get('alterar-curso/{registrosCurso}',[CursoController::class,'MostrarAlterarCurso'])->name('alterar-curso');
+Route::put('alterarbancocurso/{registrosCurso}',[CursoController::class,'AlterarBancoCurso'])->name('alterar-banco-curso');
+
+
+
+
 //para ir para o cadastro da aula 
 Route::get('/cadAula',[AulaController::class,'mostrarFormAula'])->name("form-cadastro-aula");
 Route::post('/cadAula',[AulaController::class,'cadastroAula'])->name("cadastro-aula");
 Route::get('/manipulaAula',[AulaController::class,'mostrarManipulaAula'])->name("manipula-Aula");
 Route::delete('/deletarAula/{registrosAula}',[AulaController::class,'DeletarAula'])->name("deleta-aula");
 Route::get('/buscaraulanome',[AulaController::class,'BuscarAulaNome'])->name("buscar-aula-nome");
+
+
+Route::get('alterar-aula/{registrosAula}',[AulaController::class,'MostrarAlterarAula'])->name('alterar-aula');
+Route::put('alterarbancoaula/{registrosAula}',[AulaController::class,'AlterarBancoAula'])->name('alterar-banco-aula');

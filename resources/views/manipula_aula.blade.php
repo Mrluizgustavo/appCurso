@@ -110,7 +110,7 @@
 
                           <td>
 
-                            <a href="{{route('alterar-categoria',$registrosAulas->id)}}">
+                            <a href="{{route('alterar-aula',$registrosAulas->id)}}">
 
                               <button type="button" class="btn btn-primary">
 
